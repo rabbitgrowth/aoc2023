@@ -4,6 +4,7 @@ sym←⍸num⍱'.'=data
 head←⍸2</0,num
 idx←head(∊⍨⊂⊢)⍸num
 nums←(⍎⌷∘data¨)¨idx
-⎕←+/nums/⍨{1∊1 1∘(∧.≥)¨|sym∘.-⍵}¨idx
+Adj←(1∊1 1∘(∧.≥)¨⍤(|∘.-⍥⊆))
+⎕←+/nums/⍨sym∘Adj¨idx
 gear←⍸'*'=data
-⎕←{+/×/nums[⍸⍤1⊢⍵⌿⍨2=+/⍵]}gear∘.{∨/1 1∘(∧.≥)¨|⍵-⊂⍺}idx
+⎕←{+/×/nums[⍸⍤1⊢⍵⌿⍨2=+/⍵]}gear∘.Adj idx
