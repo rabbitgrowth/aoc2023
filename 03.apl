@@ -5,6 +5,6 @@ nums←⍎¨⊃,/num⊆¨⍥↓data
 head←2</0,num
 id←num×(⍴⍴+\⍤,)head
 adj←{⊂∪0~⍨,⍵}⌺3 3⊢id
-⎕←+/nums[∊sym/⍥,adj]
+⎕←+/nums[∪∊sym/⍥,adj]
 gear←'*'=data
 ⎕←+/×/nums[↑{⍵/⍨2=≢¨⍵}gear/⍥,adj]
