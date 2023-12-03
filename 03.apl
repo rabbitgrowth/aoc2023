@@ -1,6 +1,6 @@
 data←↑⊃⎕NGET'03.txt'1
 num←data∊⎕D
-sym←⍸('.'≠data)∧~num
+sym←⍸('.'=data)⍱num
 head←⍸2</0,num
 idx←head(∊⍨⊂⊢)⍸num
 nums←(⍎⌷∘data¨)¨idx
