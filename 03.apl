@@ -7,4 +7,4 @@ nums←(⍎⌷∘data¨)¨idx
 Adj←(1∊1 1∘(∧.≥)¨⍤(|∘.-⍥⊆))
 ⎕←+/nums/⍨sym∘Adj¨idx
 gear←⍸'*'=data
-⎕←{+/×/nums[⍸⍤1⊢⍵⌿⍨2=+/⍵]}gear∘.Adj idx
+⎕←+/×/nums[⍸⍤1(⊢(⌿⍨)2=+/)gear∘.Adj idx]
