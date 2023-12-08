@@ -6,5 +6,5 @@ nodes←⊣/data
 lr←(nodes⍳1∘↓⍤1)data
 aaa zzz←nodes⍳'AAA' 'ZZZ'
 steps←0
-{r⊣steps+←1⊣r←lr[⍵;moves⊃⍨steps|⍨≢moves]}⍣{zzz=⍺}aaa
+{node⊣steps+←1⊣node←lr⌷⍨⍵,moves⊃⍨steps|⍨≢moves}⍣{zzz=⍺}aaa
 ⎕←steps
