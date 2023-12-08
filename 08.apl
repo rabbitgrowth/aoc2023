@@ -8,5 +8,5 @@ lr←(nodes⍳1∘↓⍤1)data
 aaa zzz←nodes⍳'AAA' 'ZZZ'
 Steps←{steps⊣{node⊣steps+←1⊣node←lr⌷⍨⍵,moves⊃⍨steps|⍨≢moves}⍣⍺⍺⍵⊣steps←0}
 ⎕←{zzz=⍺}Steps aaa
-__a __z←⊂⍤⍸⍤1⊢'AZ'∘.=⊃⍤⌽¨nodes
-⎕←∧/{⍺∊__z}Steps¨__a
+xxa xxz←⊂⍤⍸⍤1⊢'AZ'∘.=⊃⍤⌽¨nodes
+⎕←∧/{⍺∊xxz}Steps¨xxa
