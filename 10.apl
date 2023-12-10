@@ -1,7 +1,7 @@
 data←↑⊃⎕NGET'10.txt'1
 
 char←'|JL7F-'
-mask←{⍵⌿⍨0 2∊⍨+/⍵}⍉2⊥⍣¯1(⊢-⍳)16
+mask←(⊢(⌿⍨)0 2∊⍨+/)⍉2⊥⍣¯1(⊢-⍳)16
 dir←(¯1 0)(1 0)(0 ¯1)(0 1)
 dirs←(dir/⍨mask⌷⍨char∘⍳)¨data
 Next←⊂+⊃⍤⌷∘dirs
