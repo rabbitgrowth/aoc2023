@@ -6,7 +6,7 @@ dirs←(¯1 0)(1 0)(0 ¯1)(0 1)
 moves←(masks/¨⊂dirs)[grid]
 idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃moves⌷⍨⍺+⍵}¨⊂start
 move←⊃dirs/⍨idx⊃masks
-path←move{next←⍺+⊃⌽⍵ ⋄ start≡next:⍵ ⋄ (⊃(⊂-⍺)~⍨⊃next⌷moves)∇⍵,⊂next}⊂start
+path←move{next←⍺+⊃⌽⍵ ⋄ start≡next:⍵ ⋄ (⊃(⊃next⌷moves)~⊂-⍺)∇⍵,⊂next}⊂start
 ⎕←2÷⍨≢path
 blocks←{m←∨/u d l r←⍵ ⋄ 3 3⍴0 u 0 l m r 0 d 0}¨masks
 main←1+7|¯1+((⍴grid)↑⍸⍣¯1{⍵[⍋⍵]}path)×grid
