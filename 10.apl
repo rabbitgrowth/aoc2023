@@ -9,6 +9,6 @@ move←⊃dirs/⍨idx⊃masks
 path←move{next←⍺+⊃⌽⍵ ⋄ start≡next:⍵ ⋄ (⊃(⊃next⌷moves)~⊂-⍺)∇⍵,⊂next}⊂start
 ⎕←2÷⍨≢path
 blocks←{m←∨/u d l r←⍵ ⋄ 3 3⍴0 u 0 l m r 0 d 0}¨masks
-main←1+7|¯1+((⍴grid)↑⍸⍣¯1{⍵[⍋⍵]}path)×grid
+main←7@(~path∊⍨⍳⍤⍴)grid
 big←⊃⍪/,/blocks[main]
 ⎕←+/,(7=main)∧((≠⍀∧≠\)big)[3×⍳⍴grid]
