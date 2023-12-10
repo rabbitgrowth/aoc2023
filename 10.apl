@@ -8,12 +8,12 @@ idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃(⍺+⍵)⌷moves}¨⊂start
 (start⌷data)←idx⊃chars
 (start⌷moves)←⊂dirs/⍨idx⊃masks
 
-steps←0
+path←⍬
 curr←start
 move←⊃dirs/⍨idx⊃masks
 :Repeat
+    path,←⊂curr
     curr+←move
     move←⊃(⊂-move)~⍨⊃moves⌷⍨curr
-    steps+←1
 :Until curr≡start
-⎕←steps÷2
+⎕←2÷⍨≢path
