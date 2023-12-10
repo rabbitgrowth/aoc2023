@@ -8,9 +8,5 @@ idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃moves⌷⍨⍺+⍵}¨⊂start
 (start⌷data)←idx⊃chars
 (start⌷moves)←⊂dirs/⍨idx⊃masks
 move←⊃dirs/⍨idx⊃masks
-path←move{
-    next←⍺+⊃⌽⍵
-    start≡next:⍵
-    (⊃(⊂-⍺)~⍨⊃next⌷moves)∇⍵,⊂next
-}⊂start
+path←move{next←⍺+⊃⌽⍵ ⋄ start≡next:⍵ ⋄ (⊃(⊂-⍺)~⍨⊃next⌷moves)∇⍵,⊂next}⊂start
 ⎕←2÷⍨≢path
