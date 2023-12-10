@@ -7,3 +7,13 @@ start←⊃⍸'S'=data
 idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃(⍺+⍵)⌷moves}¨⊂start
 (start⌷data)←idx⊃chars
 (start⌷moves)←⊂dirs/⍨idx⊃masks
+
+steps←0
+curr←start
+move←⊃dirs/⍨idx⊃masks
+:Repeat
+    curr+←move
+    move←⊃(⊂-move)~⍨⊃moves⌷⍨curr
+    steps+←1
+:Until curr≡start
+⎕←steps÷2
