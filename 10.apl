@@ -7,7 +7,6 @@ start←⊃⍸'S'=data
 idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃(⍺+⍵)⌷moves}¨⊂start
 (start⌷data)←idx⊃chars
 (start⌷moves)←⊂dirs/⍨idx⊃masks
-
 move←⊃dirs/⍨idx⊃masks
 path←move{
     next←⍺+⊃⌽⍵
