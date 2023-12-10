@@ -10,5 +10,5 @@ path←move{next←⍺+⊃⌽⍵ ⋄ start≡next:⍵ ⋄ (⊃(⊃next⌷moves)~
 ⎕←2÷⍨≢path
 blocks←{m←∨/u d l r←⍵ ⋄ 3 3⍴0 u 0 l m r 0 d 0}¨masks
 main←7@(~path∊⍨⍳⍤⍴)grid
-big←⊃⍪/,/blocks[main]
+big←⊃,/⍪⌿blocks[main]
 ⎕←+/,(7=main)∧((≠⍀∧≠\)big)[3×⍳⍴grid]
