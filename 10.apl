@@ -5,6 +5,7 @@ masks←↓(⊢(⌿⍨)0 2∊⍨+/)⍉2⊥⍣¯1⌽¯1+⍳16
 dirs←(¯1 0)(1 0)(0 ¯1)(0 1)
 moves←(masks/¨⊂dirs)[grid]
 idx←masks⍳⊂dirs{3::0 ⋄ (⊂-⍺)∊⊃moves⌷⍨⍺+⍵}¨⊂start
+(start⌷grid)←idx
 move←⊃dirs/⍨idx⊃masks
 path←move{
     next←⍺+⊃⌽⍵
