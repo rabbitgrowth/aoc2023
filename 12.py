@@ -5,25 +5,25 @@ def valid(string, lengths, prev=None):
     if key in memo:
         return memo[key]
     if not string:
-        ret = lengths == [0] or not lengths # enough #-groups?
+        result = lengths == [0] or not lengths # enough #-groups?
     else:
         if string[0] == '.':
             if prev == '#':
                 if lengths[0]:
-                    ret = False
+                    result = False
                 else:
-                    ret = valid(string[1:], lengths[1:], string[0])
+                    result = valid(string[1:], lengths[1:], string[0])
             else:
-                ret = valid(string[1:], lengths, string[0])
+                result = valid(string[1:], lengths, string[0])
         elif string[0] == '#':
             if not lengths: # too many #-groups
-                ret = False
+                result = False
             else:
-                ret = valid(string[1:], [lengths[0] - 1, *lengths[1:]], string[0])
+                result = valid(string[1:], [lengths[0] - 1, *lengths[1:]], string[0])
         elif string[0] == '?':
-            ret = sum(valid(char + string[1:], lengths, prev) for char in '.#')
-    memo[key] = ret
-    return ret
+            result = sum(valid(char + string[1:], lengths, prev) for char in '.#')
+    memo[key] = result
+    return result
 
 with open('12.txt') as f:
     total1 = 0
