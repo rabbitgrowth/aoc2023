@@ -18,3 +18,5 @@ def valid(string, lengths, prev=None):
             invalid.add((string, tuple(lengths), prev))
             return False
         return valid(string[1:], [lengths[0] - 1, *lengths[1:]], string[0])
+    elif string[0] == '?':
+        return sum(valid(char + string[1:], lengths, prev) for char in '.#')
