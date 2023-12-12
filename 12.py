@@ -4,7 +4,7 @@ def valid(string, lengths, prev=None):
     if (string, tuple(lengths), prev) in invalid:
         return False
     if not string:
-        return lengths == [0] or not lengths # too few #-groups?
+        return lengths == [0] or not lengths # enough #-groups?
     if string[0] == '.':
         if prev == '#':
             if lengths[0]:
