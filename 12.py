@@ -9,7 +9,7 @@ def valid(string, lengths, prev=None):
     else:
         if string[0] == '.':
             if prev == '#':
-                if lengths[0]:
+                if lengths[0]: # wrong length
                     result = False
                 else:
                     result = valid(string[1:], lengths[1:], string[0])
