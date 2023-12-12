@@ -32,6 +32,6 @@ with open('12.txt') as f:
         string, rest = line.split()
         lengths = list(map(int, rest.split(',')))
         total1 += valid(string, lengths)
-        total2 += valid('?'.join([string]*5), lengths*5)
+        total2 += valid('?'.join([string] * 5), lengths * 5)
     print(total1)
     print(total2)
