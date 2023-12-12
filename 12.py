@@ -20,3 +20,11 @@ def valid(string, lengths, prev=None):
         return valid(string[1:], [lengths[0] - 1, *lengths[1:]], string[0])
     elif string[0] == '?':
         return sum(valid(char + string[1:], lengths, prev) for char in '.#')
+
+with open('12.txt') as f:
+    total = 0
+    for line in f:
+        string, rest = line.split()
+        lengths = list(map(int, rest.split(',')))
+        total += valid(string, lengths)
+    print(total)
