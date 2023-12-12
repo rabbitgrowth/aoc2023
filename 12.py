@@ -26,9 +26,12 @@ def valid(string, lengths, prev=None):
     return ret
 
 with open('12.txt') as f:
-    total = 0
+    total1 = 0
+    total2 = 0
     for line in f:
         string, rest = line.split()
         lengths = list(map(int, rest.split(',')))
-        total += valid(string, lengths)
-    print(total)
+        total1 += valid(string, lengths)
+        total2 += valid('?'.join([string]*5), lengths*5)
+    print(total1)
+    print(total2)
