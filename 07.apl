@@ -1,3 +1,8 @@
 hands bids←↓⍉⎕CSV⍠'Separator' ' '⊢'07.txt'⍬(1 2)
 labels←'23456789TJQKA'
-⎕←bids+.×⍋(((2↑⊂⍤⍒⌷⊢)≢⍤⊢⌸),labels∘⍳)⍤1↑hands
+Type ←                   (⊂⍤⍒⌷⊢)≢⍤⊢⌸
+Type∆←{(⊢+≢↑5-+/)(⊢⍴⍨1⌈≢)(⊂⍤⍒⌷⊢)≢⍤⊢⌸⍵~'J'}
+Label ←     labels     ∘⍳
+Label∆←('J',labels~'J')∘⍳
+⎕←bids+.×⍋⍋(Type ,⍥⊂Label )¨hands
+⎕←bids+.×⍋⍋(Type∆,⍥⊂Label∆)¨hands
