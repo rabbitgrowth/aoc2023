@@ -2,9 +2,9 @@ steps←','(≠⊆⊢)¯1↓⊃⎕NGET'15.txt'
 Hash←(256|17×+)/⍤⌽0,⎕UCS
 ⎕←+/Hash¨steps
 steps←((1@1∊∘'-=')⊂⊢)¨steps
-Dict←{
+Score←{
     keys vals←⊂⍬
-    vals⊣{
+    _←{
         key op←⍵
         idx←keys⍳⊂key
         op≡,'-':keys vals/⍨←⊂idx≠⍳≢keys
@@ -14,5 +14,7 @@ Dict←{
         vals,←val
         ⍬
     }¨⍵
+    (⍳⍤≢×⊢)vals
 }
-⎕←+/(Hash⍤⊃¨steps){(1+⍺)+.×(⍳⍤≢×⊢)Dict⍵}⌸steps
+boxes←1+Hash⍤⊃¨steps
+⎕←+/boxes+.×∘Score⌸steps
