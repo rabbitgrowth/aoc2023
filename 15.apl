@@ -3,18 +3,15 @@ Hash←(256|17×+)/⍤⌽0,⎕UCS
 ⎕←+/Hash¨steps
 steps←((1@1∊∘'-=')⊂⊢)¨steps
 Score←{
-    keys vals←⊂⍬
-    _←{
-        key op←⍵
+    (⍳⍤≢+.×⊢)⊃⌽⊃{
+        key op←⍺
+        keys vals←⍵
         idx←keys⍳⊂key
-        op≡,'-':keys vals/⍨←⊂idx≠⍳≢keys
+        op≡,'-':⍵/¨⍨⊂idx≠⍳≢keys
         val←⍎1↓op
-        idx≤≢keys:vals[idx]←val
-        keys,←⊂key
-        vals,←val
-        ⍬
-    }¨⍵
-    (⍳⍤≢×⊢)vals
+        idx≤≢keys:keys(val@idx⊢vals)
+        ⍵,∘⊂¨key val
+    }/(⌽⍵),⊂2⍴⊂⍬
 }
 boxes←1+Hash⍤⊃¨steps
-⎕←+/boxes+.×∘Score⌸steps
+⎕←+/boxes×∘Score⌸steps
