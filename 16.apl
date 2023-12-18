@@ -7,13 +7,15 @@ Dirs←{
     ('-'=⍺)∧0 1≡|⍵:⊂⍵
     (-,⍥⊂⊢)⌽⍵
 }
+i←0J1
+DirIdx←1+4|i⍟+.×∘1i
 Energy←{
-    seen←⍬
+    seen←0⍴⍨4,⍨⍴map
     ⍺{
         3::⍬
-        key←⊂⍺⍵
-        seen∊⍨key:⍬
-        seen,←key
+        idx←⍵,DirIdx⍺
+        idx⌷seen:⍬
+        (idx⌷seen)←1
         dirs←(⍵⌷map)Dirs⍺
         (⊂⍵),⊃,/dirs∇¨dirs+⊂⍵
     }⍵
