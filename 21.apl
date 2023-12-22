@@ -1,10 +1,10 @@
 ⎕IO←0
-map←↑⊃⎕NGET'21.txt'1
+map←'.S#'⍳↑⊃⎕NGET'21.txt'1
 dirs←⍸3 3⍴0 1
 next←{
     cell←1 1⌷⍵
-    '#'=cell:'#'
-    '.'=cell:'.S'['S'∊dirs⌷¨⊂⍵]
-    '.'
+    2=cell:2          ⍝ rock stays as rock
+    0=cell:1∊dirs⌷¨⊂⍵ ⍝ elf moves into plot?
+    0                 ⍝ elf has to move
 }⌺3 3
-⎕←+/,'S'=next⍣64⊢map
+⎕←+/,1=next⍣64⊢map
