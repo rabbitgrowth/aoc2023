@@ -9,11 +9,12 @@ Count←{
     +/{
         ~':'∊⍵:⍵ Count ranges
         cond name←':'(≠⊆⊢)⍵
-        var cmp num←(⊢⊆⍨3⌊⍳⍤≢)cond
+        var←⊃cond
+        Cmp←⍎2⊃cond
+        num←⍎2↓cond
         idx←'xmas'⍳var
         range←idx⊃ranges
-        mask←('<>'⍳cmp)⊃range(<,⍥⊂>)⍎num
-        chosen←mask/range
+        chosen←range/⍨range Cmp num
         (idx⊃ranges)~←chosen
         name Count (⊂chosen)@idx⊢ranges
     }¨cases
