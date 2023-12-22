@@ -14,7 +14,7 @@ Count←{
         num←⍎2↓cond
         idx←'xmas'⍳var
         range←idx⊃ranges
-        mask←(range(<,⍥⊂>)num)⊃⍨'<>'⍳cmp
+        mask←('<>'⍳cmp)⊃range(<,⍥⊂>)num
         result←name Count(⊂mask/range)@idx⊢ranges
         (idx⊃ranges)←range/⍨~mask
         result
