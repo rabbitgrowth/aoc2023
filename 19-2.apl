@@ -15,9 +15,9 @@ Count←{
         idx←'xmas'⍳var
         range←idx⊃ranges
         mask←('<>'⍳cmp)⊃range(<,⍥⊂>)num
-        count←name Count(⊂mask/range)@idx⊢ranges
+        count←name Count (⊂mask/range)@idx⊢ranges
         (idx⊃ranges)←range/⍨~mask
         count
     }¨cases
 }
-⎕←'in'Count 4⍴⊂⍳4000
+⎕←'in' Count 4⍴⊂⍳4000
