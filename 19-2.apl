@@ -9,12 +9,10 @@ Count←{
     +/{
         ~':'∊⍵:⍵ Count ranges
         cond name←':'(≠⊆⊢)⍵
-        var←  ⊃cond
-        cmp← 2⊃cond
-        num←⍎2↓cond
+        var cmp num←(⊢⊆⍨3⌊⍳⍤≢)cond
         idx←'xmas'⍳var
         range←idx⊃ranges
-        mask←('<>'⍳cmp)⊃range(<,⍥⊂>)num
+        mask←('<>'⍳cmp)⊃range(<,⍥⊂>)⍎num
         count←name Count (⊂mask/range)@idx⊢ranges
         (idx⊃ranges)←range/⍨~mask
         count
