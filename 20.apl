@@ -10,15 +10,14 @@ power←count⍴0
 pulses←0 0
 {
     {
-        tail←1↓⍵
-        3::tail
+        3::1↓⍵
         src pulse dst←1⌷⍵
         pulses[1+pulse]+←1
         type←dst⊃types
-        ('%'=type)∧pulse:tail
-        '%'=type:tail⍪dst,(dst⊃power)    ,⍪dst⊃dsts⊣(dst⊃power)-⍨←1
-        '&'=type:tail⍪dst,(~∧/dst⊃memory),⍪dst⊃dsts⊣((src⍳⍨dst⊃srcs)⊃dst⊃memory)←pulse
-        'b'=type:tail⍪dst,pulse          ,⍪dst⊃dsts
+        ('%'=type)∧pulse:1↓⍵
+        '%'=type:(1↓⍵)⍪dst,(dst⊃power)    ,⍪dst⊃dsts⊣(dst⊃power)-⍨←1
+        '&'=type:(1↓⍵)⍪dst,(~∧/dst⊃memory),⍪dst⊃dsts⊣((src⍳⍨dst⊃srcs)⊃dst⊃memory)←pulse
+        'b'=type:(1↓⍵)⍪dst,pulse          ,⍪dst⊃dsts
     }⍣{0=≢⍺}⍉⍪0 0 broadcaster
 }⍣1000⊢⍬
 ⎕←×/pulses
