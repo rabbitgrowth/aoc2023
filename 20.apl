@@ -7,12 +7,12 @@ keys vals←↓⍉⊃,⍥⊂⌸/↓⍉↑⊃,/dsts,¨¨⍳count
 srcs←(vals,⊂⍬)[keys⍳⍳count]
 memory←0×srcs
 power←count⍴0
-pulses←0 0
+pulses←⍬
 {
     {
         3::1↓⍵
         src pulse dst←1⌷⍵
-        pulses[1+pulse]+←1
+        pulses,←pulse
         type←dst⊃types
         ('%'=type)∧pulse:1↓⍵
         '%'=type:(1↓⍵)⍪dst,(dst⊃power)    ,⍪dst⊃dsts⊣(dst⊃power)-⍨←1
@@ -20,4 +20,4 @@ pulses←0 0
         'b'=type:(1↓⍵)⍪dst,pulse          ,⍪dst⊃dsts
     }⍣{0=≢⍺}⍉⍪0 0 start
 }⍣1000⊢⍬
-⎕←×/pulses
+⎕←×/≢⍤⊢⌸pulses
