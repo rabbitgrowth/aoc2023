@@ -8,4 +8,4 @@ elf←parity∧¨⊂jail⍱rock
 count ←+/⍤,¨elf
 corner←+/⍤,¨elf∧¨⊂mask
 n←202300
-⎕←+/(count××⍨1 0+n)+corner×¯1 1×1 0+n
+⎕←(count××⍨1 0+n)+.+corner×¯1 1×1 0+n
